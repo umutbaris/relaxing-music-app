@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSongsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -13,19 +13,11 @@ class CreateSongsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('songs', function (Blueprint $table) {
+		Schema::create('categories', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('category_id')->unsigned();
 			$table->string('name');
-			$table->string('artist');
 			$table->timestamps();
-
-			$table->foreign('category_id')
-			->references('id')
-			->on('categories')
-			->onDelete('cascade');
 		});
-
 	}
 
 	/**
@@ -35,6 +27,6 @@ class CreateSongsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('songs');
+		Schema::dropIfExists('categories');
 	}
 }
