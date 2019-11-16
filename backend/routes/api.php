@@ -14,5 +14,15 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
+
+
+	/**
+	 * Songs
+	 */
+	Route::get('/songs', 'SongsController@index');
+	Route::get('/songs/{id}', 'SongsController@show');
+	Route::post('/songs', 'SongsController@create');
+	Route::put('/songs/{id}', 'SongsController@update');
+	Route::delete('/songs/{id}', 'SongsController@destroy');

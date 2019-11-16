@@ -42,7 +42,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dawn-cms
+      MYSQL_DATABASE: music-db
     ports: 
       - 3306:3306
     volumes:
