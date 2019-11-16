@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  node:
+    container_name: node
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/node/Dockerfile
+    volumes:
+      - ./frontend/:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/nginx/Dockerfile
+    volumes:
+      - ./backend/public:/var/www/public
+      - ./infra/dev/docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
+    depends_on: 
+      - fpm
+    
+  fpm:
+    container_name: fpm
+    build:
+      context: ./
+      dockerfile: infra/dev/docker/fpm/Dockerfile
+    volumes:
+      - ./backend/:/var/www/
+    depends_on: 
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dawn-cms
+    ports: 
+      - 3306:3306
+    volumes:
+      - ./files/mysql_files:/var/lib/mysql:cached
