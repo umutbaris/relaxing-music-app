@@ -12,17 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/register', 'AuthController@register');
+
 Route::post('/login', 'AuthController@login');
+Route::post('/logout', 'AuthController@logout');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-	return $request->user();
-});
 
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
-Route::get('logout', 'AuthController@logout');
-Route::get('user', 'AuthController@getAuthUser');
-
+Route::middleware('jwt.auth')->group(function () {
 /**
  * Categories
  */
@@ -41,3 +37,14 @@ Route::get('/songs/{id}', 'SongsController@show');
 Route::post('/songs', 'SongsController@create');
 Route::put('/songs/{id}', 'SongsController@update');
 Route::delete('/songs/{id}', 'SongsController@destroy');
+
+/**
+ * Favorite Songs
+ */
+Route::get('/favorites', 'FavoritesController@index');
+Route::get('/favorites/{id}', 'FavoritesController@show');
+Route::post('favorites', 'FavoritesController@create');
+Route::put('/favorites/{id}', 'FavoritesController@update');
+Route::delete('/favorites/{id}', 'FavoritesController@destroy');
+});
+
