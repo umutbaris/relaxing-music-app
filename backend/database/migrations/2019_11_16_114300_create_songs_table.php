@@ -18,6 +18,8 @@ class CreateSongsTable extends Migration
 			$table->integer('categories_id')->unsigned();
 			$table->string('name');
 			$table->string('artist');
+			$table->string('favorite')->default('Add');
+			$table->integer('favoriteId')->nullable();
 			$table->timestamps();
 
 			$table->foreign('categories_id')

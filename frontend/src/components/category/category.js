@@ -19,14 +19,13 @@ class Category extends React.Component {
 	async getCategories(){
 		let tokens = await JSON.parse(localStorage.getItem('tokens'))
 		if (tokens === undefined || tokens === null ){
-			this.setToken()
-			tokens = await JSON.parse(localStorage.getItem('tokens'))
+			tokens = await this.setToken()
 		}
 
 		const categories = await axios.get('http://localhost/api/categories', { headers: { 'Authorization': 'Bearer ' + tokens.token } })
+		console.log(categories)
 		this.setState({
 			categories: categories.data.data,
-
 		})
 
 		console.log(categories.data.data)
@@ -51,14 +50,14 @@ class Category extends React.Component {
 		}
 
 		localStorage.setItem('tokens', JSON.stringify(tokens))
-
+		
+		return tokens
 	}
 	
 
 	render() {
 		return (
 			<div>
-
 			<Tag className='general-title' color="#87d068">ALBUMS</Tag>
 
 
@@ -67,6 +66,18 @@ class Category extends React.Component {
 				<Card className='category-card' title={category.name} bordered={false} style={{ width: 300 }}>
 				</Card></a> 
 			)}
+
+			<a href="/favorites" >
+			<Button type="primary" className="favorite-button" block>
+			Favorites
+			</Button>
+			</a>
+
+			<a href="/" >
+			<Button type="primary" className="favorite-button" block>
+			Albums
+			</Button>
+			</a>
 
 			</div>
 		)

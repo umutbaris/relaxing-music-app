@@ -48,8 +48,25 @@
     color: white;
     padding: 15px;
 }
-.favorite {
+.favoriteAdd{
     position: relative;
     bottom: 15px;
     left: 110px;
+}
+
+.favoriteDelete  {
+    position: relative;
+    bottom: 15px;
+    left: 110px;
+    color: white;
+    background: red;
+    border-radius: 4px;
+}
+
+.favorite-button {
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    background: rgb(135, 208, 104);
+    color: white;
 }
