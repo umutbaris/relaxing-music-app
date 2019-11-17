@@ -23,6 +23,7 @@
 
 	`cd backend`
 
+	
 	`composer install`
 
 * 4 Build images and run the project
@@ -57,11 +58,11 @@
 * 3 Build images and run the project
  - First build image 
 
-  `docker-compose build`
+     `docker-compose build`
 
  - Then compose up
 
-   `docker-compose up`
+     `docker-compose up`
 
 
 
