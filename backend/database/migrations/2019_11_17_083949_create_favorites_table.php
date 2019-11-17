@@ -18,6 +18,7 @@ class CreateFavoritesTable extends Migration
 			$table->integer('categories_id')->unsigned();
 			$table->string('name');
 			$table->string('artist');
+			$table->integer('song_id');
 			$table->timestamps();
 
 			$table->foreign('categories_id')

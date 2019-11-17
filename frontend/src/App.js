@@ -7,7 +7,8 @@ import {
 	Route,
  } from 'react-router-dom'
 import Home from './components/category/category.js'
- import Songs from './components/category/songs.js'
+import Songs from './components/category/songs.js'
+import Favorites from './components/category/favorites.js'
 
 
 class App extends Component {
@@ -33,6 +34,11 @@ class App extends Component {
 				exact
 				path='/songs'
 				render={(props) => <Songs />}
+			/>
+			<Route
+				exact
+				path='/favorites'
+				render={(props) => <Favorites />}
 			/>
 		</Switch>
 	</BrowserRouter>

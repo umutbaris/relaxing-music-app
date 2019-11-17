@@ -31,7 +31,6 @@ class Songs extends React.Component {
 
 		this.setState({
 			songs: categories.data.data.songs,
-
 		})
 
 		return categories.data.data
@@ -68,7 +67,7 @@ class Songs extends React.Component {
 		}
 
 		if (method === 'Add') {
-			await this.favoritesAdd(songId, name, artist, categoryId, method, tokens)
+			await this.favoritesAdd(songId, name, artist, categoryId, tokens)
 		} else {
 			await this.favoritesDelete(songId, name, artist, categoryId, method, tokens, favoriteId)
 			
@@ -76,7 +75,8 @@ class Songs extends React.Component {
 
 	}
 
-	async favoritesAdd (songId, name, artist, categoryId, method, tokens) {
+	async favoritesAdd (songId, name, artist, categoryId, tokens) {
+		
 		const response = await axios.request({
 			url: 'http://localhost/api/favorites',
 			method: "POST",
@@ -88,8 +88,10 @@ class Songs extends React.Component {
 				'name' : name,
 				'artist' : artist,
 				'categories_id' : categoryId,
+				'song_id' : songId,
 			}
 		});
+
 
 		this.updateFavoriteColumnsOfSong(songId, 'Delete', tokens, response.data.data.id)
 		if(response.data.success) {
@@ -158,6 +160,19 @@ class Songs extends React.Component {
 				<Button key={songs.id} className={'favorite' + songs.favorite}type="primary" shape="circle" icon="heart" onClick={() => this.favoritesDecider(songs.id, songs.name, songs.artist, songs.categories_id, songs.favorite, songs.favoriteId)} />
 			</div>
 			)}
+
+			<a href="/favorites" >
+				<Button type="primary" className="favorite-button" block>
+				Favorites
+				</Button>
+				</a>
+
+				<a href="/" >
+				<Button type="primary" className="favorite-button" block>
+				Albums
+				</Button>
+			</a>
+
 
 			</div>
 		)

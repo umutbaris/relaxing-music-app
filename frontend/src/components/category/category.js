@@ -23,12 +23,10 @@ class Category extends React.Component {
 		}
 
 		const categories = await axios.get('http://localhost/api/categories', { headers: { 'Authorization': 'Bearer ' + tokens.token } })
-		console.log(categories)
 		this.setState({
 			categories: categories.data.data,
 		})
 
-		console.log(categories.data.data)
 		return categories.data.data
 	}
 
