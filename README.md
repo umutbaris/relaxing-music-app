@@ -28,43 +28,20 @@
 
 * 4 Build images and run the project
 
- - First build image 
+  First build image 
 
    `docker-compose build`
 
- - Then compose up
+  Then compose up
 
     `docker-compose up`
 
-- 5 If there is a problem about laravel enter the container
+* 5 If there is a problem about laravel enter the container
   `docker exec -it fpm bash`
 
- - Then cache clear
+  Then cache clear
 
     `php artisan config:cache`
-
- ## Api Endpoints
-
-* 1 Clone The Repository 
-
-  `git clone https://gitlab.com/umutbariskarasar/mercedes-challenge.git`
-
-* 2 If there is a problem about vendor please go to backend folder and run composer install
-  
-  `cd backend`
-  `composer install`
-
-
-* 3 Build images and run the project
- - First build image 
-
-     `docker-compose build`
-
- - Then compose up
-
-     `docker-compose up`
-
-
 
  ## Api Endpoints
 
