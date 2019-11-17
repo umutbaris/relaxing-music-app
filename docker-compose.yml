@@ -9,6 +9,8 @@ services:
     volumes:
       - ./frontend/:/app
       - /app/node_modules
+    working_dir: /app
+    command: npm run start-dev
     ports:
       - 3000:3000
 

@@ -152,7 +152,7 @@ class Songs extends React.Component {
 	render() {
 		return (
 			<div>
-			<Tag className='general-title' color="#87d068">SONGS</Tag>
+			<Card className='general-title' title='SONGS' bordered={false} style={{ width: 300 }}></Card>
 			{this.state.songs.map(songs => 
 			<div key={songs.id}>
 				<Card className='song-card' title={songs.name} bordered={false} style={{ width: 300 }}>

@@ -47,6 +47,7 @@
 .general-title {
     color: white;
     padding: 15px;
+    background: rgb(135, 208, 104);    
 }
 .favoriteAdd{
     position: relative;

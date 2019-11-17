@@ -56,7 +56,8 @@ class Category extends React.Component {
 	render() {
 		return (
 			<div>
-			<Tag className='general-title' color="#87d068">ALBUMS</Tag>
+
+			<Card className='general-title' title='ALBUMS' bordered={false} style={{ width: 300 }}></Card>
 
 
 			{this.state.categories.map(category => 

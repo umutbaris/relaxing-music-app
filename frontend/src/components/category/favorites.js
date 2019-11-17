@@ -94,7 +94,7 @@ class Favorites extends React.Component {
 	render() {
 		return (
 			<div>
-			<Tag className='general-title' color="#87d068">FAVORITES</Tag>
+			<Card className='general-title' title='FAVORITES' bordered={false} style={{ width: 300 }}></Card>
 			{this.state.favorites.map(favorites => 
 			<div key={favorites.id}>
 				<Card className='song-card' title={favorites.name} bordered={false} style={{ width: 300 }}>
