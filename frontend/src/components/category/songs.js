@@ -3,33 +3,37 @@ import axios from 'axios';
 import { Result, Button, Card, Tag } from 'antd';
 const { Meta } = Card;
 
-class Category extends React.Component {
+class Songs extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			categories: [],
+			songs: [],
 		}
 
 	}
 
 	componentDidMount(){
-		this.getCategories()
+		this.getSongsWithCategory()
 	}
 
-	async getCategories(){
+	async getSongsWithCategory(){
 		let tokens = await JSON.parse(localStorage.getItem('tokens'))
 		if (tokens === undefined || tokens === null ){
 			this.setToken()
 			tokens = await JSON.parse(localStorage.getItem('tokens'))
 		}
 
-		const categories = await axios.get('http://localhost/api/categories', { headers: { 'Authorization': 'Bearer ' + tokens.token } })
+		let search = window.location.search;
+		let params = new URLSearchParams(search);
+		let categoryId = params.get('category');
+
+		const categories = await axios.get('http://localhost/api/categories/' + categoryId, { headers: { 'Authorization': 'Bearer ' + tokens.token } })
+		
 		this.setState({
-			categories: categories.data.data,
+			songs: categories.data.data.songs,
 
 		})
 
-		console.log(categories.data.data)
 		return categories.data.data
 	}
 
@@ -51,21 +55,25 @@ class Category extends React.Component {
 		}
 
 		localStorage.setItem('tokens', JSON.stringify(tokens))
-
 	}
-	
+
+	async addFavorites() {
+		console.log('favorites')
+	}
 
 	render() {
+		console.log(this.state.songs)
+		
 		return (
 			<div>
 
-			<Tag className='general-title' color="#87d068">ALBUMS</Tag>
-
-
-			{this.state.categories.map(category => 
-			 	<a href={'/songs/?category=' + category.id} key={category.id} >
-				<Card className='category-card' title={category.name} bordered={false} style={{ width: 300 }}>
-				</Card></a> 
+			<Tag className='general-title' color="#87d068">SONGS</Tag>
+			{this.state.songs.map(songs => 
+			<div key={songs.id}>
+				<Card className='song-card'  title={songs.name} bordered={false} style={{ width: 300 }}>
+				</Card>
+				<Button key={songs.id} className='favorite' type="primary" shape="circle" icon="heart" onClick={this.addFavorites} />
+			</div>
 			)}
 
 			</div>
@@ -76,4 +84,4 @@ class Category extends React.Component {
 	}
 }
 
-export default Category
+export default Songs

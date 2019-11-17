@@ -28,8 +28,28 @@
 }
 
 .category-card {
-     background: #ECECEC;
-     padding: 30px;
-     border: solid 1px;
-     margin: 10px;
+    background: #000000;
+    padding: 20px;
+    border: solid 1px;
+    margin: 10px;
+    color: white;
+}
+
+.song-card {
+    background: #000000;
+    padding: 20px;
+    border: solid 1px;
+    margin: 10px;
+    color: white;
+    margin-bottom: -25px;
+}
+
+.general-title {
+    color: white;
+    padding: 15px;
+}
+.favorite {
+    position: relative;
+    bottom: 15px;
+    left: 110px;
 }

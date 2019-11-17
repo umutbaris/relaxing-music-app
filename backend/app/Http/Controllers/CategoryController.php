@@ -19,14 +19,14 @@ class CategoryController extends Controller
 
 	public function index()
 	{
-		$category = $this->categoryRepository->all();
+		$category = $this->categoryRepository->all('songs');
 
 		return $this->sendSuccess($category);
 	}
 
 	public function show(int $id)
 	{
-		$category = $this->categoryRepository->find($id);
+		$category = $this->categoryRepository->find($id, 'songs');
 
 		return $this->sendSuccess($category);
 	}

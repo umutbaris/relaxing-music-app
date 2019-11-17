@@ -10,6 +10,6 @@ class Categories extends Model
 	
 	public function songs()
 	{
-		return $this->hasMany(Songs::class);
+		return $this->hasMany('App\Models\Songs');
 	}
 }

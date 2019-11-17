@@ -15,12 +15,12 @@ class CreateSongsTable extends Migration
 	{
 		Schema::create('songs', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('category_id')->unsigned();
+			$table->integer('categories_id')->unsigned();
 			$table->string('name');
 			$table->string('artist');
 			$table->timestamps();
 
-			$table->foreign('category_id')
+			$table->foreign('categories_id')
 			->references('id')
 			->on('categories')
 			->onDelete('cascade');

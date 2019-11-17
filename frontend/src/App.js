@@ -6,8 +6,8 @@ import {
 	Switch,
 	Route,
  } from 'react-router-dom'
- import Home from './components/category/category.js'
-//  import Dashboard from './components/Dashboard/Dashboard.js'
+import Home from './components/category/category.js'
+ import Songs from './components/category/songs.js'
 
 
 class App extends Component {
@@ -29,11 +29,11 @@ class App extends Component {
 				path='/'
 				render={(props) => <Home />}
 			/>
-			{/* <Route
+			<Route
 				exact
-				path='/dashboard'
-				render={(props) => <Dashboard />}
-			/> */}
+				path='/songs'
+				render={(props) => <Songs />}
+			/>
 		</Switch>
 	</BrowserRouter>
 	  </div>
