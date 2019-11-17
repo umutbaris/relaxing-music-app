@@ -13,7 +13,6 @@
 
 ## Installation
 
-\## Installation
 
 * 1 Clone The Repository 
 
@@ -50,15 +49,19 @@
   `git clone https://gitlab.com/umutbariskarasar/mercedes-challenge.git`
 
 * 2 If there is a problem about vendor please go to backend folder and run composer install
+  
   `cd backend`
   `composer install`
 
 
 * 3 Build images and run the project
  - First build image 
-`docker-compose build`
+
+  `docker-compose build`
+
  - Then compose up
- `docker-compose up`
+
+   `docker-compose up`
 
 
 
