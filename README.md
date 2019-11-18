@@ -40,3 +40,6 @@
   Then cache clear
 
     `php artisan config:cache`
+    
+* Also you can view postman collection with this url 
+https://www.getpostman.com/collections/b4f676e99c41d01c5dd6
