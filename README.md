@@ -1,6 +1,5 @@
 # Relaxing-Music-App
 
-"In Process"
 
 **Technologies used**
 - Docker
